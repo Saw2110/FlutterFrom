@@ -1,0 +1,64 @@
+name: marketing
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  # for StateManagement
+  provider: any
+  # for Network helper
+  http: any
+  # fro Local Database
+  sqflite: any
+  # for path
+  path_provider: any
+  path: any
+  # Custom Widget
+  customstuff:
+    git:
+      url: https://github.com/Saw2110/customstuff.git
+      ref: master
+  # for Nepali Date Picker
+  nepali_date_picker: ^5.2.0
+  # for Time
+  time_picker_widget: ^1.0.0+10
+  # for Page Transaction
+  page_transition: any
+  # for Device Information
+  device_info_plus: ^4.0.0
+  # for notify to user
+  fluttertoast: ^8.0.9
+  # for get Current Location
+  geolocator: any
+  geocoding: any
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^1.0.0
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/
+
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+
