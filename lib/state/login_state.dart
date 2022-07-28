@@ -39,9 +39,13 @@ class LoginState extends ChangeNotifier {
   }
 
   clear() async {
+    // cooperativeController = TextEditingController(text: "ES25");
+    // userController = TextEditingController(text: "ghpravash");
+    // passController = TextEditingController(text: "easy@123");
+
     cooperativeController = TextEditingController(text: "");
-    userController = TextEditingController(text: "ghpravash");
-    passController = TextEditingController(text: "easy@123");
+    userController = TextEditingController(text: "");
+    passController = TextEditingController(text: "");
 
     isLoading = false;
     isRemember = false;

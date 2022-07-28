@@ -127,7 +127,6 @@ class IndexState extends ChangeNotifier {
     typeValue = SoftwareType.offline;
     isViewMore = false;
     isFollowUpInformation = false;
-    followDateController = TextEditingController(text: "");
     orgNameController = TextEditingController(text: "");
     orgAddressController = TextEditingController(text: "");
     orgTypeController = TextEditingController(text: "");
@@ -152,13 +151,20 @@ class IndexState extends ChangeNotifier {
     productController = TextEditingController(text: "");
     leadStatusController = TextEditingController(text: "");
     leadStaffController = TextEditingController(text: "");
-    leadDateController = TextEditingController(text: "");
-    leadEnquiryTimeController = TextEditingController(text: "");
+    leadDateController =
+        TextEditingController(text: NepaliDateTime.now().format("y/MM/dd"));
+    leadEnquiryTimeController =
+        TextEditingController(text: NepaliDateTime.now().format("h:mm a"));
     leadRemarkController = TextEditingController(text: "");
     quotePriceController = TextEditingController(text: "");
     followController = TextEditingController(text: "");
     followSelectController = TextEditingController(text: "");
-    followTimeController = TextEditingController(text: "");
+
+    followDateController =
+        TextEditingController(text: NepaliDateTime.now().format("y/MM/dd"));
+    followTimeController =
+        TextEditingController(text: NepaliDateTime.now().format("h:mm a"));
+
     followStaffController = TextEditingController(text: "");
     followRemarkController = TextEditingController(text: "");
 

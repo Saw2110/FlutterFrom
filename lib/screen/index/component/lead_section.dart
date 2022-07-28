@@ -31,6 +31,7 @@ class LeadSection extends StatelessWidget {
             child: TextFieldFormat(
               textFieldName: 'Select Source *',
               textFormField: CustomDropDown<DropDownDataModel>(
+                isExpanded: true,
                 borderColor: Colors.white,
                 primaryColor: primaryColor,
                 fillColor: dropDownFillColor,
@@ -59,6 +60,7 @@ class LeadSection extends StatelessWidget {
             child: TextFieldFormat(
               textFieldName: 'Select Product *',
               textFormField: CustomDropDown<DropDownDataModel>(
+                isExpanded: true,
                 borderColor: Colors.white,
                 primaryColor: primaryColor,
                 fillColor: dropDownFillColor,
@@ -88,6 +90,7 @@ class LeadSection extends StatelessWidget {
             child: TextFieldFormat(
               textFieldName: 'Select Lead Status *',
               textFormField: CustomDropDown(
+                isExpanded: true,
                 borderColor: Colors.white,
                 primaryColor: primaryColor,
                 fillColor: dropDownFillColor,
@@ -116,6 +119,7 @@ class LeadSection extends StatelessWidget {
             child: TextFieldFormat(
               textFieldName: 'Select Staff *',
               textFormField: CustomDropDown<DropDownDataModel>(
+                isExpanded: true,
                 borderColor: Colors.white,
                 primaryColor: primaryColor,
                 fillColor: dropDownFillColor,

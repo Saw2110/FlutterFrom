@@ -71,7 +71,9 @@ class EntryDetailModel {
       required this.followRemark});
 
   EntryDetailModel.fromJson(Map<String, dynamic> json) {
-    primaryId = int.parse(json['PrimaryID'].toString()).toString();
+    primaryId = json['PrimaryID'] == null
+        ? "-"
+        : int.parse(json['PrimaryID'].toString()).toString();
     flag = json['Flag'] ?? "-";
     orgName = json['OrgName'] ?? "-";
     orgAddress = json['OrgAddress'] ?? "-";

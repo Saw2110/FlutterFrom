@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:marketing/model/basic_model.dart';
 import 'package:marketing/model/entry_detail_model.dart';
@@ -99,7 +102,11 @@ class OrgListState extends ChangeNotifier {
 
   onDataUpload({required String from}) async {
     getLoading = true;
+
     Navigator.pop(context);
+
+    log("From =>  $from\n\n");
+    log("\n\nData Value  =>  ${jsonEncode(dataValue)}");
 
     BasicModel basicModel = await UpdateOrgAPI.apiCall(
         data: dataValue, loginData: loginData, cooperativeCode: "ES25");

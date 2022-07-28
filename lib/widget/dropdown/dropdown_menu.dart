@@ -9,6 +9,7 @@ class DropDownMenuText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       item,
+      maxLines: 1,
       overflow: TextOverflow.ellipsis,
       style: const TextStyle(fontSize: 13.0),
     );

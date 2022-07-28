@@ -9,5 +9,5 @@ const Map<String, dynamic> errorNetworkMap = {
   "Message": "No Internet Connection."
 };
 
-const String baseUrl = "https://esnep.com/easyoffice/api/";
+const String baseUrl = "https://testing.esnep.com/office/api/";
 const String easyWebSiteURL = "https://easysoftware.com.np/";
