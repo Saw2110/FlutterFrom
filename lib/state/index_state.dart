@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:customstuff/utils/log_print.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +78,12 @@ class IndexState extends ChangeNotifier {
     "SMS Service",
     "Cloud Backup"
   ];
-  late List<TextEditingController> serviceTypeControllerList;
+  late List<TextEditingController> serviceTypeControllerList = [];
+
+  //
+  // set getControllerText(){
+  //   notifyListeners();
+  // }
 
   late List<DropDownDataModel> organizationTypeList,
       districtList,
@@ -105,6 +111,8 @@ class IndexState extends ChangeNotifier {
     cloudFocus = FocusNode();
   }
 
+  late String currentTime;
+
   init() async {
     await clear();
     await getSharePref();
@@ -118,6 +126,7 @@ class IndexState extends ChangeNotifier {
   }
 
   clear() async {
+    currentTime = NepaliDateTime.now().format("hh:mm aa");
     organizationTypeList.clear;
     districtList.clear;
     leadSourceList.clear;
@@ -154,7 +163,7 @@ class IndexState extends ChangeNotifier {
     leadDateController =
         TextEditingController(text: NepaliDateTime.now().format("y/MM/dd"));
     leadEnquiryTimeController =
-        TextEditingController(text: NepaliDateTime.now().format("h:mm a"));
+        TextEditingController(text: getFormattedTime(time: currentTime));
     leadRemarkController = TextEditingController(text: "");
     quotePriceController = TextEditingController(text: "");
     followController = TextEditingController(text: "");
@@ -163,7 +172,7 @@ class IndexState extends ChangeNotifier {
     followDateController =
         TextEditingController(text: NepaliDateTime.now().format("y/MM/dd"));
     followTimeController =
-        TextEditingController(text: NepaliDateTime.now().format("h:mm a"));
+        TextEditingController(text: getFormattedTime(time: currentTime));
 
     followStaffController = TextEditingController(text: "");
     followRemarkController = TextEditingController(text: "");
@@ -291,10 +300,12 @@ class IndexState extends ChangeNotifier {
     );
     if (newTime != null) {
       if (filterFrom == "Lead") {
-        leadEnquiryTimeController.text = newTime.format(context);
+        String value = newTime.format(context);
+        leadEnquiryTimeController.text = getFormattedTime(time: value);
         validateKey.currentState!.validate();
       } else {
-        followTimeController.text = newTime.format(context);
+        String value = newTime.format(context);
+        followTimeController.text = getFormattedTime(time: value);
         validateKey.currentState!.validate();
       }
     }
@@ -332,11 +343,16 @@ class IndexState extends ChangeNotifier {
       orgLandlineNo: orgLandlineController.text.trim(),
       mobileNo: orgMobileNoController.text.trim(),
       softwareType: softwareTypeController.text.trim(),
-      website: webSiteController.text.trim(),
-      software: softwareController.text.trim(),
-      attendanceSystem: attendanceController.text.trim(),
-      smsService: smsController.text.trim(),
-      cloudBackUp: cloudController.text.trim(),
+      website: serviceTypeControllerList[0].text.trim(),
+      //webSiteController.text.trim(),
+      software: serviceTypeControllerList[1].text.trim(),
+      //softwareController.text.trim(),
+      attendanceSystem: serviceTypeControllerList[2].text.trim(),
+      //attendanceController.text.trim(),
+      smsService: serviceTypeControllerList[3].text.trim(),
+      //smsController.text.trim(),
+      cloudBackUp: serviceTypeControllerList[4].text.trim(),
+      //cloudController.text.trim(),
       email: emailController.text.trim(),
       orgPAN: orgPanController.text.trim(),
       socialMedia: socialMediaController.text.trim(),
@@ -434,5 +450,16 @@ class IndexState extends ChangeNotifier {
     });
 
     notifyListeners();
+  }
+
+  String getFormattedTime({required String time}) {
+    String splitTime = "${time.split(" ")[0]}:00 ";
+    String fixTime = (int.parse(splitTime.split(":").first) < 10)
+        ? "0${time.split(" ")[0]}:00 "
+        : "${time.split(" ")[0]}:00 ";
+    String formattedTime = fixTime + time.split(" ")[1];
+    log("Fix Time  => $fixTime");
+    log("Lead Time  => $formattedTime");
+    return formattedTime;
   }
 }
